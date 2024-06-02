@@ -294,7 +294,9 @@ function parseJsonFromText(text) {
     // Parse the found string to JSON
     return JSON.parse(match[1]);
   } else {
-    throw new Error("JSON data not found");
+    // Temporary fix to bypass issue introduced by https://github.com/open-telemetry/opentelemetry-collector-contrib/commit/c7ae39b72de203bbae0cea031728ed630f1dc293
+    debug({msg: "No JSON found in previous issue"})
+    return null
   }
 }
 
